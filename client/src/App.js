@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { connect } from 'react-redux'
+import DisplayListings from "./components/DisplayListings";
+import * as actionCreators from './store/creators/actionCreators'
 
-function App() {
+function App(props) {
+
+  useEffect(() => {
+    props.onFetchListings()
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Home</h1>
+      <DisplayListings />
     </div>
   );
+
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchListings: () => dispatch(actionCreators.fetchListings())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
