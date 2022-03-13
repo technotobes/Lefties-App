@@ -23,3 +23,10 @@ export const logout = () => {
         payload: null
     }
 }
+
+export const saveAddress = (address) => {
+    return {
+        type: actionTypes.SET_ADDRESS,
+        payload: address
+    }
+}

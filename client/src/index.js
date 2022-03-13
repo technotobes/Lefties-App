@@ -13,10 +13,12 @@ import BaseLayout from './components/BaseLayout';
 import Login from './components/Login';
 import Register from './components/Register';
 import AddListing from './components/AddListing';
+import Logout from './components/Logout';
 
 // Importing Reducers
 import authenticateReducer from './store/reducers/authenticate'
 import listingReducer from './store/reducers/listings'
+import addressReducer from './store/reducers/address'
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -24,6 +26,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   authenticateRed: authenticateReducer,
   listingsRed: listingReducer,
+  addressRed: addressReducer,
+
 })
 
 const store = createStore(rootReducer, composeEnhancers(
@@ -39,6 +43,7 @@ ReactDOM.render(
             <Route path="/" element={<App />}></Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/add-listing" element={<AddListing />} />
           </Routes>
         </BaseLayout>
