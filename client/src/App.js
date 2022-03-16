@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { connect } from 'react-redux'
+import Address from "./components/Address";
+import AddressDisplay from "./components/AddressDisplay";
 import DisplayListings from "./components/DisplayListings";
+import Search from "./components/Search";
 import * as actionCreators from './store/creators/actionCreators'
+import "./css/Listing.css"
 
 function App(props) {
 
@@ -10,9 +14,17 @@ function App(props) {
   })
 
   return (
-    <div>
-      <h1>Home</h1>
-      <DisplayListings />
+    <div className="mainContainer">
+
+      <div className="filterContainer">
+        <Search />
+        {!props.address ? <div><Address /></div> : <div><AddressDisplay /></div>}
+      </div>
+
+      <div>
+        <DisplayListings />
+
+      </div>
     </div>
   );
 
@@ -24,4 +36,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = (state) => {
+  return {
+    address: state.addressRed.address
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);

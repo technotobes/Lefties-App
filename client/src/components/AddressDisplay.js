@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import * as actionCreators from '../store/creators/actionCreators'
 
 
 function AddressDisplay(props) {
 
-    const address = props.address.split(',')
+  const address = props.address.split(',')
+
+  useEffect(() => {
+    console.log(props.address)
+    props.onFetchGeolocation(props.address)
+  }, [])
+
+
 
   return (
     
@@ -21,6 +29,12 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchGeolocation: (location) => dispatch(actionCreators.fetchGeolocation(location))
+  }
+}
 
 
-export default connect(mapStateToProps)(AddressDisplay)
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddressDisplay)

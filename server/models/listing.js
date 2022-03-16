@@ -20,7 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     quantity: DataTypes.INTEGER,
     size: DataTypes.STRING,
     pickup: DataTypes.BOOLEAN,
-    delivery: DataTypes.BOOLEAN
+    delivery: DataTypes.BOOLEAN,
+    user_id: DataTypes.INTEGER,
+    address: DataTypes.STRING,
+    lat: DataTypes.FLOAT,
+    lng: DataTypes.FLOAT
   }, {
     sequelize,
     modelName: 'Listing',

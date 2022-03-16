@@ -1,0 +1,53 @@
+.clickListing {
+    background-color: white;
+    width: 300px;
+    list-style-type: none !important;
+    color: black;
+}
+
+.listingContainer {
+    display: flex;
+    list-style-type: none !important;
+}
+
+.Modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 500px;
+    padding: 40px;
+    background-color: rgb(255, 255, 255);
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(206, 206, 206, 0.377);
+}
+
+.btnOn {
+    background-color: red;
+    color:white
+}
+
+.btnOff {
+    background-color: white;
+    color:black
+}
+
+.filterContainer {
+    display:flex;
+    flex-direction: column;
+}
+
+.mainContainer {
+    display:flex;
+    flex-direction: row;
+    padding: 60px;
+    
+}

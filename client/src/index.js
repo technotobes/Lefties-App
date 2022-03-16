@@ -14,11 +14,16 @@ import Login from './components/Login';
 import Register from './components/Register';
 import AddListing from './components/AddListing';
 import Logout from './components/Logout';
+import Landing from './components/Landing';
+import Payment from './components/Payment'
 
 // Importing Reducers
 import authenticateReducer from './store/reducers/authenticate'
 import listingReducer from './store/reducers/listings'
 import addressReducer from './store/reducers/address'
+import cartReducer from './store/reducers/cart'
+import filterReducer from './store/reducers/filter'
+
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -27,6 +32,8 @@ const rootReducer = combineReducers({
   authenticateRed: authenticateReducer,
   listingsRed: listingReducer,
   addressRed: addressReducer,
+  cartRed: cartReducer,
+  filterRed: filterReducer,
 
 })
 
@@ -34,17 +41,22 @@ const store = createStore(rootReducer, composeEnhancers(
   applyMiddleware(thunk)
 ))
 
+const token = localStorage.getItem('jsonwebtoken')
+store.dispatch({type: 'LOGIN', payload: token})
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <BaseLayout>
           <Routes>
-            <Route path="/" element={<App />}></Route>
+            <Route path="/" element={<Landing/>}></Route>
+            <Route path="/home" element={<App />}></Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/add-listing" element={<AddListing />} />
+            <Route path="/payment" element={<Payment />} />
           </Routes>
         </BaseLayout>
       </BrowserRouter>

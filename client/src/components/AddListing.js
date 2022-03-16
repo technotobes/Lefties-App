@@ -1,24 +1,44 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 
 
-function AddListing() {
+function AddListing(props) {
 
     const [listing, setListing] = useState({})
+    const [lat, setLat] = useState('')
+    const [lng, setLng] = useState('')
+
+    console.log(props.address)
+
+    useEffect(() => {
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDLGK5HZ52V33C4nbX8kXQ-IIveo_A0QpM&address=${props.address}`)
+        .then(response => response.json())
+        .then(function(response){
+            setLat(response.results[0].geometry.location.lat)
+            setLng(response.results[0].geometry.location.lng)
+           
+        })
+    }, [])
+
+    console.log(lat)
 
     const handleTextChange = (e) => {
         setListing({
             ...listing,
             [e.target.name]: e.target.value,
-            userId: localStorage.getItem('userId')
+            userId: localStorage.getItem('userId'),
+            address: props.address,
+            lat: lat,
+            lng: lng
         })
     }
 
-    const handleCheckboxChange = (e) => {
-        const { checked } = e.target
+    const handleCheckboxChange = (e) => {       
+        const { checked } = e.target    
         setListing({
             ...listing,
             [e.target.name]: checked
-        })
+        })   
     }
 
     const handleSaveListing = (state) => {
@@ -49,4 +69,10 @@ function AddListing() {
     )
 }
 
-export default AddListing
+const mapStateToProps = (state) => {
+    return {
+        address: state.addressRed.address
+    }
+}
+
+export default connect(mapStateToProps)(AddListing)

@@ -2,37 +2,32 @@
     display: flex;
     justify-content: space-between;
     background-color: rgb(231, 231, 231);
-    padding: 10px;
+    padding: 7px;
+    max-height: 35px;
 }
 
 .left-container {
     display: flex;
-    padding: 10px;
-    z-index: 99;
+    font-weight: 600;
     max-width: 300px;
+    justify-content: space-between;
 }
 
-
 .middle-container {
-    padding: 10px;
-    display:block;
+    padding: 5px;
 }
 
 
 .right-container {
     display:flex;
     justify-content: space-between;
-    font-weight: 650;
+    font-weight: 600;
     max-width: 300px;
 }
 
-.addressText {
-    height: 20px;
-    border-radius: 5px;
-}
 
 .loginBtn {
-    padding: 10px;
+    padding: 5px;
     background-color: beige;
     border-radius: 30px;
     width: 80px;
@@ -40,24 +35,66 @@
 }
 
 .logoutBtn {
-    padding: 10px;
+    padding: 5px;
     background-color: beige;
     border-radius: 30px;
-    width: 80px;
+    width: 90px;
     text-align: center;
 }
 
 .registerBtn {
-    padding: 10px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.invisibleBox {
+    width: 217.5px;
 }
 
 .addListingBtn {
-    padding: 10px;
+    padding: 5px;
+    background-color: beige;
+    border-radius: 30px;
+    width: 110px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+.hamburger {
+    padding: 6px;
+}
+
+.shoppingCart {
+    display:flex;
+    padding: 5px;
+    background-color: red;
+    color: white;
+    border-radius: 30px;
+    width: 60px;
+    justify-content: space-evenly;
+    margin-right: 40px;
 }
 
 a {
     text-decoration: none;
 }
+
+.addressText {
+    font-size: 20px;
+    width: 400px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: rgb(255, 255, 255);
+}
+
+.addressText:focus {
+    outline:none;
+}
+
+
+/* Left Hambuger */
 
 .sidenav {
     height: 100%;
@@ -68,31 +105,79 @@ a {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.3s;
     padding-top: 60px;
-  }
+}
+
+.navLinks {
+    margin-top: 50px;
+    text-align: left;
+}
   
-  .sidenav a {
+.sidenav a {
+padding: 8px 8px 8px 32px;
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+.sidenav a:hover {
+color: #f1f1f1;
+}
+
+.sidenav .closeBtn {
+position: absolute;
+top: 0;
+right: 190px;
+font-size: 45px !important;
+margin-left: 50px;
+padding: 10px;
+}
+  
+#main {
+transition: margin-left .3s;
+}
+
+/* Right Hamburger */
+
+.sidenav2 {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgb(243, 243, 243);
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+}
+
+.sidenav2 a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
     transition: 0.3s;
-  }
-  
-  .sidenav a:hover {
+}
+
+.sidenav2 a:hover, .offcanvas a:focus{
     color: #f1f1f1;
-  }
-  
-  .sidenav .closeBtn {
+}
+
+.closeBtn {
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 36px;
+    right: 330px;
+    font-size: 42px !important;
     margin-left: 50px;
-  }
-  
-  #main {
-    transition: margin-left .5s;
-  }
+    padding: 10px;
+}
+
+.cartListContainer {
+    margin-left: 20px;
+    color: rgb(92, 92, 92);
+}

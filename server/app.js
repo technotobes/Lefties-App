@@ -1,16 +1,40 @@
 const express = require('express')
 const cors = require('cors')
+require('dotenv').config()
 const app = express()
 const models = require('./models')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-require('dotenv').config()
+const bodyParser = require("body-parser")
 
 
+const strip = require("stripe")(process.env.STRIPE_SECRET_TEST)
+
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 app.use(cors())
 app.use(express.json())
 
 const SALT_ROUND = 10
+
+app.post("/payment" , cors(), async (req, res) => {
+    let { amount, id } = req.body
+    try {
+        const payment = await strip.paymentIntents.create({
+            amount,
+            currency: "USD",
+            description: "Test",
+            payment_method: id,
+            confirm: true
+        })
+        console.log("Payment", payment)
+        res.json({message: "Payment Successful", success: true})
+    } catch (error) {
+        console.log("Error", error)
+        res.json({message:"Payment Failed", success: false})
+    }
+})
+
 
 app.get('/listings', (req, res) => {
     models.Listing.findAll()
@@ -28,8 +52,11 @@ app.post('/listings', (req, res) => {
     const pickup = req.body.pickup
     const delivery = req.body.delivery
     const userId = req.body.userId
+    const address = String(req.body.address)
+    const lat = req.body.lat
+    const lng = req.body.lng
 
-    const listingAdded = models.Listing.build({
+    const listing = models.Listing.build({
         title: title,
         description: description,
         price: price,
@@ -37,9 +64,12 @@ app.post('/listings', (req, res) => {
         size: size,
         pickup: pickup,
         delivery: delivery,
-        user_id: userId
+        user_id: userId,
+        address: address,
+        lat: lat,
+        lng: lng,
     })
-    listingAdded.save().then(() => {
+    listing.save().then(() => {
         res.json({success:true, message:"Listing Created"})
     })
 })
