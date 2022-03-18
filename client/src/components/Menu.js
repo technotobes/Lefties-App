@@ -3,10 +3,15 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../css/Menu.css'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { MdShoppingCart } from 'react-icons/md'
 import CartCountDisplay from './CartCountDisplay'
 import CartList from './CartList'
+
+// Icons
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { MdShoppingCart, MdLogout, MdFastfood } from 'react-icons/md'
+import { FaHome } from 'react-icons/fa'
+import { CgProfile } from 'react-icons/cg'
+import lefties from '../images/leftiesLogo.png'
 
 function Menu(props) {
 
@@ -28,7 +33,6 @@ function Menu(props) {
     document.getElementById("mySidenav2").style.width = "0";
   }
 
-
   return (
     <div className='navBar' id='main'>
 
@@ -38,10 +42,17 @@ function Menu(props) {
         <div id="mySidenav" className='sidenav'>
           <a className='closeBtn' onClick={() => closeNav()}>&times;</a>
           <div className="navLinks">
-            <NavLink to="/">Home</NavLink>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <div className="navIcons">
+              <FaHome size="2.2em"/>
+              <NavLink to="/">Home</NavLink>
+            </div>
+            <div className="navIcons">
+              <MdFastfood size="2em"/>
+              <NavLink to="/listings">Listings</NavLink>
+            </div>
+            <div className="navIcons">
+              {!props.isAuthenticated ? <><CgProfile size="2.2em"/><div><NavLink to="/login">Sign In</NavLink></div></>: <><MdLogout size="2.2em"/><div><NavLink to="/logout">Sign Out</NavLink></div></>}
+            </div>
           </div>
         </div>
         
@@ -50,7 +61,7 @@ function Menu(props) {
 
 
       <div className='middle-container'>
-        <NavLink to="/">Lefties</NavLink>
+        <NavLink to="/"><img src={lefties}/></NavLink>
       </div>
 
       <div className='right-container'>

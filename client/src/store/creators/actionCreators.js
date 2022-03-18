@@ -11,12 +11,10 @@ export const fetchListings = () => {
 }
 
 export const fetchGeolocation = (location) => {
-    console.log(location)
     return (dispatch) => {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDLGK5HZ52V33C4nbX8kXQ-IIveo_A0QpM&address=${location}`)
         .then(response => response.json())
         .then(function(response){
-            console.log(response)
             const lat = response.results[0].geometry.location.lat;
             const lng = response.results[0].geometry.location.lng;
             dispatch({type: actionTypes.SET_LATITUDE, payload: lat})
@@ -56,6 +54,13 @@ export const addToCart = (listing) => {
     }
 }
 
+export const checkout = (value) => {
+    return {
+        type: actionTypes.CHECKOUT,
+        payload: value
+    }
+}
+
 export const toggleDelivery = (value) => {
     return {
         type: actionTypes.SET_DELIVERY,
@@ -67,5 +72,19 @@ export const togglePickup = (value) => {
     return {
         type: actionTypes.SET_PICKUP,
         payload: value
+    }
+}
+
+export const clearCart = () => {
+    return {
+        type: actionTypes.CLEAR_CART,
+        payload: null
+    }
+}
+
+export const removeItem = (index) => {
+    return {
+        type: actionTypes.REMOVE_ITEM,
+        payload: index
     }
 }

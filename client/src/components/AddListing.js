@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import Address2 from './Address2'
+import AddressDisplay from './AddressDisplay'
+
 
 
 function AddListing(props) {
@@ -8,7 +12,7 @@ function AddListing(props) {
     const [lat, setLat] = useState('')
     const [lng, setLng] = useState('')
 
-    console.log(props.address)
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDLGK5HZ52V33C4nbX8kXQ-IIveo_A0QpM&address=${props.address}`)
@@ -50,21 +54,31 @@ function AddListing(props) {
             body: JSON.stringify(state)
         }).then(response => response.json())
         .then(result => {
+            navigate("/listings")
             console.log(result)
         })
     }
 
     return (
-        <div>
-            <h1>Add Listing</h1>
-            <input type="text" placeholder="Title" name="title" onChange={handleTextChange}/>
-            <input type="text" placeholder="Description" name="description" onChange={handleTextChange}/>
-            <input type="text" placeholder="Price" name="price" onChange={handleTextChange}/>
-            <input type="text" placeholder="Quantity" name="quantity" onChange={handleTextChange}/>
-            <input type="text" placeholder="Size" name="size" onChange={handleTextChange}/>
-            <input type="checkbox" name="pickup" onChange={handleCheckboxChange}/>
-            <input type="checkbox" name="delivery" onChange={handleCheckboxChange}/>
-            <button onClick={() => handleSaveListing(listing)}>Add Listing</button>
+        <div className="registerContainer">
+            <div className="registerInput">
+                <h1>Add a Listing</h1>
+                <input type="text" placeholder="Title" name="title" onChange={handleTextChange}/>
+                <input type="text" placeholder="Description" name="description" onChange={handleTextChange}/>
+                <input type="text" placeholder="Price" name="price" onChange={handleTextChange}/>
+                <input type="text" placeholder="Quantity" name="quantity" onChange={handleTextChange}/>
+                <input type="text" placeholder="Size: (Small, Medium, Large)" name="size" onChange={handleTextChange}/>
+                <div className="checkboxContainer">
+                    <div className="boxContainer">Pickup:<input type="checkbox" className="box" name="pickup" onChange={handleCheckboxChange}/></div>
+                    <div className="boxContainer">Delivery: <input type="checkbox" className="box" name="delivery" onChange={handleCheckboxChange}/></div>
+                </div>
+                <div className="addListingAddress">
+                    {!props.address ? <div><Address2 /></div> : <div><AddressDisplay /></div>}
+                </div>
+
+                
+                <button onClick={() => handleSaveListing(listing)}>Add Listing</button>
+            </div>
         </div>
     )
 }

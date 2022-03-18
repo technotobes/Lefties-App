@@ -43,6 +43,41 @@ app.get('/listings', (req, res) => {
     })
 })
 
+app.get('/listings/delivery', (req, res) => {
+    models.Listing.findAll({
+        where: [{
+            delivery: true
+        }]
+    })
+    .then((listings) => {
+        res.json(listings)
+    })
+})
+
+app.get('/listings/pickup', (req, res) => {
+    models.Listing.findAll({
+        where: [{
+            pickup: true
+        }]
+    })
+    .then((listings) => {
+        res.json(listings)
+    })
+})
+
+app.get('/listings/delivery&pickup', (req, res) => {
+    models.Listing.findAll({
+        where: [{
+            delivery: true,
+            pickup: true
+        }]
+    })
+    .then((listings) => {
+        res.json(listings)
+    })
+})
+
+
 app.post('/listings', (req, res) => {
     const title = req.body.title
     const description = req.body.description
@@ -142,6 +177,20 @@ app.post('/register', async (req, res) => {
         res.json({errorMessage:"Username Already Exists!"})
     }
 
+})
+
+app.post('/listing/update/:id', (req, res) => {
+    const listingId = req.params.id
+    const quantity = req.body.quantity
+    models.Listing.update({
+        quantity: quantity,
+    },{
+        where: {
+            id: listingId,
+        }
+    }).then(() => {
+        res.json({success:true, message:"Listing Updated"})
+    })
 })
 
 app.listen(8080, () => {

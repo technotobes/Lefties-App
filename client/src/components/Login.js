@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actionCreators from '../store/creators/actionCreators'
@@ -6,6 +6,13 @@ import * as actionCreators from '../store/creators/actionCreators'
 function Login(props) {
 
     const [user, setUser] = useState({})
+
+    useEffect(() => {
+        setUser({
+            username:"guest",
+            password:"password"
+        })
+    }, [])
 
     const handleTextChange = (e) => {
         setUser({
@@ -43,13 +50,18 @@ function Login(props) {
 
         })
     }
+
     return (
-        <div>
-            <h1>Login</h1>
-            <input type="text" placeholder="username" name="username" onChange={handleTextChange}/>
-            <input type="password" placeholder="password" name="password" onChange={handleTextChange}/>
-            <button onClick={handleLoginUser}>Login</button>
+        <div className="registerContainer">
+            <div className="registerInput">
+                <h1>Login</h1>
+                <input type="text" placeholder="Username" name="username" onChange={handleTextChange}/>
+                <input type="password" placeholder="Password" name="password" onChange={handleTextChange}/>
+                <button onClick={handleLoginUser}>Login</button>
+                <button className="guestBtn" onClick={handleLoginUser}>Guest Login</button>
+            </div>
         </div>
+
     )
 }
 

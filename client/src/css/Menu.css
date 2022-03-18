@@ -1,9 +1,16 @@
+
+.footer {
+    display:flex;
+    justify-content: center;
+    color:rgb(255, 0, 0);
+}
 .navBar {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(255, 255, 255);
     padding: 7px;
     max-height: 35px;
+    border-bottom: 1px solid rgb(207, 207, 207);
 }
 
 .left-container {
@@ -14,7 +21,11 @@
 }
 
 .middle-container {
-    padding: 5px;
+    padding-bottom: 0px;
+}
+
+.middle-container img {
+    width: 100px;
 }
 
 
@@ -28,36 +39,69 @@
 
 .loginBtn {
     padding: 5px;
-    background-color: beige;
     border-radius: 30px;
     width: 80px;
     text-align: center;
+    border: 1px solid red;
+    background-color: red;
+}
+
+.loginBtn:hover {
+    background-color: rgb(255, 131, 131);
+    border: 1px solid rgb(255, 131, 131);
+}
+
+.registerBtn:hover {
+    background-color: rgba(212, 212, 212, 0.5);
+    border: 1px solid red;  
+}
+
+.loginBtn a {
+    color: white;
 }
 
 .logoutBtn {
     padding: 5px;
-    background-color: beige;
     border-radius: 30px;
     width: 90px;
     text-align: center;
+    border: 1px solid red;
+    color: red;
+    background-color: red;
+}
+
+.logoutBtn a {
+    color: rgb(255, 255, 255);
 }
 
 .registerBtn {
     padding: 5px;
     margin-right: 10px;
+    border: 1px solid red;
+    width: 80px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.registerBtn a{
+    color: red
 }
 
 .invisibleBox {
-    width: 217.5px;
+    width: 265px;
 }
 
 .addListingBtn {
     padding: 5px;
-    background-color: beige;
     border-radius: 30px;
-    width: 110px;
+    width: 135px;
     text-align: center;
     margin-left: 30px;
+    border: 1px solid red;
+}
+
+.addListingBtn a {
+    color: red;
 }
 
 .hamburger {
@@ -103,29 +147,44 @@ a {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(255, 255, 255);
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
+    
 }
 
 .navLinks {
     margin-top: 50px;
-    text-align: left;
-}
-  
-.sidenav a {
-padding: 8px 8px 8px 32px;
-text-decoration: none;
-font-size: 25px;
-color: #818181;
-display: block;
-transition: 0.3s;
 }
 
-.sidenav a:hover {
-color: #f1f1f1;
+.navLinks :hover {
+    color: red;
 }
+ 
+.navIcons {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.navIcons :hover {
+    color: red;
+}
+
+  
+.sidenav a {
+    padding: 8px 8px 8px 18px;
+    text-decoration: none;
+    font-size: 30px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+
+
+}
+
 
 .sidenav .closeBtn {
 position: absolute;
@@ -149,7 +208,7 @@ transition: margin-left .3s;
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: rgb(243, 243, 243);
+    background-color: rgb(255, 255, 255);
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
@@ -180,4 +239,24 @@ transition: margin-left .3s;
 .cartListContainer {
     margin-left: 20px;
     color: rgb(92, 92, 92);
+}
+
+.addressTextContainer{
+    font-size: 30px;
+}
+
+.addressBtn {
+    width: 400px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid red;
+    padding: 5px;
+    margin-top: 20px;
+    background-color: rgba(255, 0, 0, 0.733);
+    color: white;
+}
+
+.addressBtn:hover {
+    background-color: white;
+    color: red;
 }

@@ -12,7 +12,7 @@ function Search(props) {
 
     return (
         <div>
-            <div>
+            <div className='fContainer'>
                 {props.delivery ? <button className="btnOn" onClick={() => {setDelivery(!delivery); props.onToggleDelivery(delivery)}}>Delivery</button>:<button className="btnOff" onClick={() => {setDelivery(!delivery); props.onToggleDelivery(delivery)}}>Delivery</button> }
                 {props.pickup ? <button className="btnOn" onClick={() => {setPickup(!pickup); props.onTogglePickup(pickup)}}>Pick up</button>:<button className="btnOff" onClick={() => {setPickup(!pickup); props.onTogglePickup(pickup)}}>Pick up</button>}
             </div>

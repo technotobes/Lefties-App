@@ -2,12 +2,77 @@
     background-color: white;
     width: 300px;
     list-style-type: none !important;
-    color: black;
+    color: rgb(88, 88, 88);
+    padding: 15px;
+    border: 1px solid rgb(139, 139, 139);
+    border-radius: 3px;
+    width: 400px;
+}
+
+.listing {
+    display:flex;
+    padding-bottom: 10px;
+    justify-content: center;
+}
+
+.mainListingContainer {
+    display: flex;
+    border: 1px solid rgb(207, 207, 207);
+    width: 600px;
+    flex-direction: column;
+    height: 700px;
+    overflow:auto;
+    border-radius: 3px;
+
+
+}
+
+.mainListingContainer h1 {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px;
 }
 
 .listingContainer {
-    display: flex;
     list-style-type: none !important;
+}
+
+.box {
+    width: 25px;
+    height: 25px;
+}
+
+.checkboxContainer {
+    display:flex;
+    margin-bottom: 10px;
+    
+}
+
+.addListingAddress {
+    margin-bottom: 30px;
+}
+
+.boxContainer {
+    display: flex;
+    align-items: center;
+}
+
+.mapContainer {
+    position:relative;
+    right: 0;
+    width: 740px;
+    height: 840px;
+}
+
+body {
+    overflow-x: hidden;
+}
+.rootContainer {
+    display: flex;
+
 }
 
 .Modal {
@@ -19,6 +84,30 @@
     width: 500px;
     padding: 40px;
     background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.modalBtns {
+    display:flex;
+    justify-content: space-evenly;
+    margin-top: 50px
+}
+
+.modalPrice {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.modalDescription {
+    font-size:20px
+}
+
+.modalBtns button {
+    border: 1px solid red;
+    color: white;
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .Overlay {
@@ -32,22 +121,120 @@
 
 .btnOn {
     background-color: red;
-    color:white
+    color:white;
+    width: 100px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    border: 1px solid red;
 }
 
 .btnOff {
     background-color: white;
-    color:black
+    color:red;
+    width: 100px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    border: 1px solid red;
 }
 
 .filterContainer {
     display:flex;
     flex-direction: column;
+    border: 1px solid rgb(207, 207, 207);
+    padding: 20px;
+    width: 390px;
+    height: 300px;
+    border-radius: 4px;
+    margin-right: 25px;
+}
+
+.filters {
+    margin-bottom: 30px;
 }
 
 .mainContainer {
     display:flex;
     flex-direction: row;
     padding: 60px;
+    justify-content: space-between;
     
+}
+
+.fContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.listingInfoContainer {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.distanceContainer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.servings {
+    display:flex;
+    margin-bottom: 5px;
+}
+
+.listingTitle {
+    display:flex;
+    justify-content: space-between;
+}
+
+.listingIcons {
+    display:flex;
+    align-items: center;
+    color: rgba(255, 0, 0, 0.637);
+}
+
+.mainCartContainer {
+    display: flex;
+    flex-direction: column
+}
+
+.mainCartListingContainer {
+    display:flex;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+    list-style: none;
+}
+
+.deleteBtn {
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+}
+
+.deleteBtn:hover {
+    background-color: red;
+    color: white;
+}
+.cartListingContainer {
+    display:flex;
+    padding: 10px;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.checkout {
+    margin-top:30px;
+    font-size: 20px;
+}
+
+.checkoutBtn2 {
+    color: red !important; 
+    text-align: end !important;
+    margin-right: 30px;
+}
+
+.checkoutBtn2:hover {
+    color:rgb(149, 149, 149) !important;
 }

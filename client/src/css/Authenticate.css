@@ -1,0 +1,57 @@
+.registerContainer {
+    display:flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.registerInput {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 100px;
+    margin-top: 100px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.registerInput input {
+    margin-bottom: 10px;
+    font-size: 25px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 173, 173);
+    padding: 10px;
+}
+
+.registerInput h1 {
+    color: red;
+}
+
+.guestBtn {
+    background-color: rgb(112, 112, 112) !important;
+    border: 1px solid rgb(112, 112, 112) !important;
+}
+
+.guestBtn:hover {
+    background-color: rgb(255, 255, 255) !important;
+    border: 1px solid rgb(255, 0, 0) !important;
+}
+
+.registerInput button {
+    padding: 10px;
+    font-size: 20px;
+    background-color: red;
+    border: 1px solid rgb(255, 0, 0);
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.registerInput button:hover {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+}

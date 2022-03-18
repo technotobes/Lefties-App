@@ -1,8 +1,7 @@
 import Menu from "./Menu";
 import '../css/Menu.css'
-import Address from './Address'
-import AddressDisplay from './AddressDisplay'
 import { connect } from 'react-redux'
+import Footer from "./Footer";
 
 
 function BaseLayout(props) {
@@ -12,7 +11,7 @@ function BaseLayout(props) {
                 <Menu />
                 {/* {!props.address ? <div><Address /></div> : <div><AddressDisplay /></div>} */}
                 {props.children}
-                <h6>Footer</h6>
+                <Footer />
             </div>
         </div>
     )

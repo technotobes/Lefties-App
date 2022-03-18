@@ -16,6 +16,7 @@ import AddListing from './components/AddListing';
 import Logout from './components/Logout';
 import Landing from './components/Landing';
 import Payment from './components/Payment'
+import ProtectedRoute from './components/ProtectedRoute'
 
 // Importing Reducers
 import authenticateReducer from './store/reducers/authenticate'
@@ -51,11 +52,15 @@ ReactDOM.render(
         <BaseLayout>
           <Routes>
             <Route path="/" element={<Landing/>}></Route>
-            <Route path="/home" element={<App />}></Route>
+            <Route path="/listings" element={<App />}></Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/add-listing" element={<AddListing />} />
+            <Route path="/add-listing" element={
+              <ProtectedRoute token={token}>
+                <AddListing />
+              </ProtectedRoute>
+            } />
             <Route path="/payment" element={<Payment />} />
           </Routes>
         </BaseLayout>

@@ -1,9 +1,9 @@
 import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
-    address: "",
-    latitude:"",
-    longitude:""
+    address: "Atlanta, Georgia",
+    latitude:"33.7676338",
+    longitude:"-84.560689"
 }
 
 const reducer = (state = initialState, action) => {

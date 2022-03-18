@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../store/creators/actionCreators'
-
+import '../css/Menu.css'
 
 function AddressDisplay(props) {
 
   const address = props.address.split(',')
 
+
   useEffect(() => {
-    console.log(props.address)
     props.onFetchGeolocation(props.address)
   }, [])
+
+  
 
 
 
   return (
     
-    <div>
-        {address[0]}
+    <div className="addressTextContainer">
+        <div>{address[0]}</div>
+        <button className="addressBtn" onClick={() => props.onSaveAddress(null)}>Change Address</button>
     </div>
   )
 }
@@ -31,7 +34,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchGeolocation: (location) => dispatch(actionCreators.fetchGeolocation(location))
+    onFetchGeolocation: (location) => dispatch(actionCreators.fetchGeolocation(location)),
+    onSaveAddress: (address) => dispatch(actionCreators.saveAddress(address))
   }
 }
 

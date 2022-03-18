@@ -15,7 +15,6 @@ function Address(props) {
 
     const handleSelect = async value => {
         props.onSaveAddress(value)
-        navigate('/listings')
     };
 
     // console.log(address)

@@ -2,10 +2,11 @@
 	margin: 0 15px 20px;
 	padding: 0;
 	border-style: none;
-	background-color: #7795f8;
+	background-color: #ff8282f8;
 	will-change: opacity, transform;
-	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #829fff;
+	box-shadow: 0 6px 9px rgba(93, 50, 50, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #ff8282;
 	border-radius: 4px;
+	color:white;
 }
 
 .FormRow {
@@ -14,7 +15,7 @@
 	-ms-flex-align: center;
 	align-items: center;
 	margin-left: 15px;
-	border-top: 1px solid #819efc;
+	border-top: 1px solid #ff8282;
 }
 
 .StripeElement--webkit-autofill {
@@ -36,4 +37,67 @@
 h1,
 h3 {
 	text-align: center;
+}
+
+.mainOrderDetailsContainer {
+	display:flex;
+	justify-content: center;
+}
+
+.cartOrderContainer {
+	display:flex;
+	width: 300px;
+	justify-content: space-between;
+	margin-right: 10px;
+	margin-bottom: 10px;
+
+}
+
+.cartOrderContainer button {
+	margin-bottom: 10px;
+}
+
+.checkoutBtn button{
+	color: white !important;
+	border: 1px solid #ff8282;
+	background-color: #ff8282;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.checkoutBtn button:hover {
+	background-color: white;
+	color:red !important;
+}
+
+.checkoutBtn h3 {
+	color: grey;
+}
+
+.checkoutBtn {
+	display:flex;
+	flex-direction: column;
+	width:500px;
+	margin-right: 0;
+	text-align: end;
+}
+
+.mOContainer {
+	display:flex;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: rgb(104, 104, 104);
+}
+
+.mOContainer2 {
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	border: 1px solid rgb(199, 199, 199);
+	padding: 10px;
+	width: 400px;
+	margin-bottom: 30px;
 }

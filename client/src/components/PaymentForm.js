@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import '../css/Stripe.css'
+import { connect } from 'react-redux'
+import * as actionCreators from '../store/creators/actionCreators'
 
-export default function PaymentForm() {
+function PaymentForm(props) {
     const [success, setSuccess] =useState(false)
+    const [quantity2, setQuantity] =useState("")
     const stripe = useStripe()
     const elements = useElements()
 
@@ -38,8 +41,9 @@ export default function PaymentForm() {
         if(!error) {
             try {
                 const {id} = paymentMethod
+                const amount = (100 * parseFloat(props.cartTotal))
                 const response = await axios.post("http://localhost:8080/payment", {
-                    amount: 1000,
+                    amount: amount,
                     id
                 })
                 if(response.data.success) {
@@ -55,6 +59,41 @@ export default function PaymentForm() {
         } 
     }
 
+
+    // result changes, useEffect
+    
+    const fetchListingQuantity = (id) => {
+        var result = props.listings.filter(listing => {
+            return listing.id === id
+        })
+
+        return result[0].quantity
+    }
+    
+    console.log(props.allCartItems)
+    
+    const updateDB = () => {
+        for (let i=0;i<props.allCartItems.length; i++) {
+            const id = props.allCartItems[i].id
+            const quantity = fetchListingQuantity(id) - 1
+            setQuantity(quantity)
+            fetch(`http://localhost:8080/listing/update/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({"quantity": `${quantity}`})
+            }).then(() => {
+                console.log("Success")
+            })
+        }
+    }
+    
+    const handlePay = () => {
+        updateDB()
+        props.clearCart()
+    }
+
     return (
 
         <>
@@ -65,14 +104,31 @@ export default function PaymentForm() {
                     <CardElement options={CARD_OPTIONS}/>
                 </div>
             </fieldset>
-            <button>Pay</button>
+            <button onClick={() => handlePay()}>Pay</button>
         </form>
         :
         <div>
-            <h2>You just bought a sweet spatula</h2>
+            <h2>Order Recieved!</h2>
         </div>    
         }
         </>
     )
 
 }
+
+const mapStateToProps = (state) => {
+    return {
+        cartTotal: state.cartRed.total,
+        allCartItems: state.cartRed.cart,
+        listings: state.listingsRed.listings,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        clearCart: () => dispatch(actionCreators.clearCart()),
+        onFetchListings: () => dispatch(actionCreators.fetchListings())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentForm)

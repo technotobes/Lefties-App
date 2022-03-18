@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import "../css/Authenticate.css"
 
 function Register() {
 
     const [user, setUser] = useState({})
+
+    const navigate = useNavigate()
 
     const handleTextChange = (e) => {
         setUser({
@@ -20,18 +24,21 @@ function Register() {
             body: JSON.stringify(user) 
         }).then(response => response.json())
         .then(result => {
-            console.log(result)
+            navigate("/")
 
         })
     }
 
     return(
-        <div>
-            <h1>Register</h1>
-            <input type="text" placeholder="email" name="email" onChange={handleTextChange}/>
-            <input type="text" placeholder="username" name="username" onChange={handleTextChange}/>
-            <input type="password" placeholder="password" name="password" onChange={handleTextChange}/>
-            <button onClick={handleSaveUser}>Register</button>
+        <div className="registerContainer">
+            <div className="registerInput">
+                <h1>Register</h1>
+                <input type="text" placeholder="Email" name="email" onChange={handleTextChange}/>
+                <input type="text" placeholder="Username" name="username" onChange={handleTextChange}/>
+                <input type="password" placeholder="Password" name="password" onChange={handleTextChange}/>
+                <button onClick={handleSaveUser}>Create Account</button>
+            </div>
+          
         </div>
     )
 }
