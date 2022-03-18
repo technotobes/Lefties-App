@@ -107,7 +107,7 @@ function PaymentForm(props) {
             <button onClick={() => handlePay()}>Pay</button>
         </form>
         :
-        <div>
+        <div className="orderSuccess">
             <h2>Order Recieved!</h2>
         </div>    
         }

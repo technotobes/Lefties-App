@@ -18,6 +18,11 @@
 	border-top: 1px solid #ff8282;
 }
 
+.orderSuccess {
+	display:flex;
+	justify-content: center;
+}
+
 .StripeElement--webkit-autofill {
 	background: transparent !important;
 }

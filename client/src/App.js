@@ -11,13 +11,17 @@ import Map from "./components/Map";
 import * as actionCreators from './store/creators/actionCreators'
 import "./css/Listing.css"
 
+
 function App(props) {
+
+  const API_KEY = process.env.REACT_APP_GOOGLE_API
+
 
   useEffect(() => {
     props.onFetchListings()
   }, [])
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDLGK5HZ52V33C4nbX8kXQ-IIveo_A0QpM"
+    googleMapsApiKey: API_KEY
   })
 
   if (!isLoaded) return <div>Loading...</div>
