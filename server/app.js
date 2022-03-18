@@ -16,6 +16,8 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(express.json())
 
+const PORT = process.env.PORT || 8080 
+
 // Serve Frontend
 
 if(process.env.NODE_ENV === 'production') {
@@ -204,6 +206,6 @@ app.post('/listing/update/:id', (req, res) => {
     })
 })
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
     console.log('Server is running')
 })
