@@ -44,14 +44,14 @@ function Menu(props) {
           <div className="navLinks">
             <div className="navIcons">
               <FaHome size="2.2em"/>
-              <NavLink to="/">Home</NavLink>
+              <NavLink onClick={() => closeNav()} to="/">Home</NavLink>
             </div>
             <div className="navIcons">
               <MdFastfood size="2em"/>
-              <NavLink to="/listings">Listings</NavLink>
+              <NavLink onClick={() => closeNav()} to="/listings">Listings</NavLink>
             </div>
             <div className="navIcons">
-              {!props.isAuthenticated ? <><CgProfile size="2.2em"/><div><NavLink to="/login">Sign In</NavLink></div></>: <><MdLogout size="2.2em"/><div><NavLink to="/logout">Sign Out</NavLink></div></>}
+              {!props.isAuthenticated ? <><CgProfile size="2.2em"/><div><NavLink onClick={() => closeNav()} to="/login">Sign In</NavLink></div></>: <><MdLogout size="2.2em"/><div><NavLink onClick={() => closeNav()} to="/logout">Sign Out</NavLink></div></>}
             </div>
           </div>
         </div>

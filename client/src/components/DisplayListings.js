@@ -145,7 +145,8 @@ function DisplayListings(props) {
                             <h2>{modalData.title}</h2>
                             <p className="modalDescription">{modalData.description}</p>
                             <p className="modalPrice">$ {modalData.price}</p>
-                            <p>{modalData.quantity} Servings Available</p>
+                            <p>Serving Size: {modalData.size}</p>
+                            <b>{modalData.quantity} Servings Available</b>
                             <p>{modalData.pickup ? <div>Pickup at: {modalData.address}</div>: null}</p>
                             <div className="modalBtns">
                                 <button onClick={() => props.onAddToCart(modalData)}>Add To Cart</button>
