@@ -1,4 +1,4 @@
-# Pokepedia
+# Lefties - Buy and Sell Your Leftovers!
 * **Purpose of the app:** 
     This app was created so that users may buy and sell leftover meals at a local scale.  Food waste is a problem in many first-world countries, and this app helps in trying to prevent a part of the food waste that happens in America.
 * **How to use:**
