@@ -42,7 +42,7 @@ function PaymentForm(props) {
             try {
                 const {id} = paymentMethod
                 const amount = (100 * parseFloat(props.cartTotal))
-                const response = await axios.post("http://localhost:8080/payment", {
+                const response = await axios.post("https://lefties.herokuapp.com/payment", {
                     amount: amount,
                     id
                 })

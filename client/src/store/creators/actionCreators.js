@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes'
 
 export const fetchListings = () => {
     return (dispatch) => {
-        fetch('http://localhost:8080/listings')
+        fetch('https://lefties.herokuapp.com/listings')
         .then(response => response.json())
         .then(listings => {
           dispatch({type: actionTypes.LISTINGS_LOADED, payload: listings})

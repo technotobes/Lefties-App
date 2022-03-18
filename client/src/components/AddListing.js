@@ -46,7 +46,7 @@ function AddListing(props) {
     }
 
     const handleSaveListing = (state) => {
-        fetch('http://localhost:8080/listings', {
+        fetch('https://lefties.herokuapp.com/listings', {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'

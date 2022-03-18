@@ -24,7 +24,7 @@ function Login(props) {
     const navigate = useNavigate()
 
     const handleLoginUser = () => {
-        fetch('http://localhost:8080/login', {
+        fetch('https://lefties.herokuapp.com/login', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'

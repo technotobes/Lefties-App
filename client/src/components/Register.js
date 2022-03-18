@@ -16,7 +16,7 @@ function Register() {
     }
 
     const handleSaveUser = () => {
-        fetch('http://localhost:8080/register', {
+        fetch('https://lefties.herokuapp.com/register', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
